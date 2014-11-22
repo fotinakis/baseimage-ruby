@@ -1,4 +1,5 @@
 baseimage-ruby
 ==============
 
-A minimal Ubuntu image with Ruby.
+A minimal Docker Ubuntu image with Ruby ready to go!
+
