@@ -8,10 +8,9 @@ MAINTAINER Mike Fotinakis <mike@fotinakis.com>
 # Set correct environment variables.
 ENV HOME /root
 
-# Regenerate SSH host keys. baseimage-docker does not contain any, so you
-# have to do that yourself. You may also comment out this instruction; the
-# init system will auto-generate one during boot.
-RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
+# Disable SSH, enabled by phusion/baseimage by default. We don't want to encourage SSH management
+# because `docker exec` exists now. https://github.com/phusion/baseimage-docker#disabling-ssh
+RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
